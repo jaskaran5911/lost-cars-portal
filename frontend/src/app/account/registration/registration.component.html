@@ -1,0 +1,67 @@
+<div class="v-h-center" fxLayout="row column" fxLayoutAlign="center center" fxFlex="100">
+
+  <mat-card class="mat-elevation-z2 p-2 login-card">
+    <mat-card-content fxLayout="column" fxFlex="100">
+      <mat-card-title class="text-center mb-1"> Sign up</mat-card-title>
+
+      <app-alert></app-alert>
+
+      <form #signUpForm="ngForm" (ngSubmit)="signUp()">
+        <div fxLayout="column" fxFlex="100">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <label>
+              <input matInput type="text" name="name" [(ngModel)]="registrationModel.name" placeholder="Full Name"
+                     required #name="ngModel">
+            </label>
+            <mat-error *ngIf="name.touched && name.invalid">
+              <small class="mat-text-warn" *ngIf="name?.errors.required">Name is required.</small>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <label>
+              <input matInput type="email" name="email" [(ngModel)]="registrationModel.email" placeholder="Email"
+                     required #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+            </label>
+            <mat-error *ngIf="email.touched && email.invalid">
+              <small class="mat-text-warn" *ngIf="email?.errors.required">Email is required.</small>
+              <small class="mat-text-warn" *ngIf="email?.errors?.pattern">Email is invalid.</small>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <label>
+              <input matInput type="password" name="password" [(ngModel)]="registrationModel.password"
+                     placeholder="Password" required #password="ngModel">
+            </label>
+            <mat-error *ngIf="password.touched && password.invalid">
+              <small class="mat-text-warn" *ngIf="password?.errors.required">Password is required.</small>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <label>
+              <input matInput type="password" name="cPassword" [(ngModel)]="registrationModel.cPassword"
+                     placeholder="Confirm Password" required  #cPassword="ngModel">
+            </label>
+            <mat-error *ngIf="cPassword.touched && cPassword.invalid">
+              <small class="mat-text-warn" *ngIf="cPassword?.errors.required">Confirm Password is required.</small>
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="signUp()"
+                  [disabled]="signUpForm.form.invalid || isDisableBtn">
+            Sign up
+            <app-spinner *ngIf="spinnerService.visibility | async" class="d-inline-block ml-1"
+                         [diameter]="15"></app-spinner>
+          </button>
+        </div>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

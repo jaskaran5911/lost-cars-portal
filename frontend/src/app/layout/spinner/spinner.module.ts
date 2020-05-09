@@ -1,0 +1,21 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {SpinnerComponent} from './spinner.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {FlexModule} from '@angular/flex-layout';
+
+
+@NgModule({
+  declarations: [
+    SpinnerComponent
+  ],
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule,
+    FlexModule
+  ],
+  exports: [
+    SpinnerComponent
+  ]
+})
+export class SpinnerModule { }

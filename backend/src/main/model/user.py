@@ -13,6 +13,12 @@ class User(Entity, db.Model, UserMixin):
     password = db.Column(db.String(60))
     active = db.Column(db.Boolean, default=True)
     roles = db.relationship('Role', secondary=roles_users, backref=db.backref('users', lazy='dynamic'))
+    complaint_by = db.relationship(
+        'Complaint', foreign_keys='Complaint.complaint_by', backref='complaint_user', lazy=True
+    )
+    responded_by = db.relationship(
+        'Complaint', foreign_keys='Complaint.responded_by', backref='responded_user', lazy=True
+    )
 
     last_login_at = db.Column(db.DateTime(), nullable=True)
     current_login_at = db.Column(db.DateTime(), nullable=True)

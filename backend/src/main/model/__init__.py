@@ -9,6 +9,7 @@ def load_model():
     import src.main.model.role
     import src.main.model.user
     import src.main.model.roles_user
+    import src.main.model.complaint
 
 
 def db_user_data_store():

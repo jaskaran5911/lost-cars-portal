@@ -13,9 +13,19 @@ export class Constant {
   public static readonly EQ = 'eq';
   public static readonly HAS = 'has';
   public static readonly ANY = 'any';
+  public static readonly LIKE = 'like';
   public static readonly EMAIL = 'email';
   public static readonly STATUS = 'status';
+  public static readonly COMPLAINT_BY = 'complaint_by';
+  public static readonly RESPONDED_BY = 'responded_by';
   public static readonly UPDATED_AT = 'updated_at';
+  public static readonly PIN_CODE = 'pin_code';
+
+  public static readonly COMPLAINT_STATUS = {
+    ACCEPTED: 'ACCEPTED',
+    REJECTED: 'REJECTED',
+    UNDER_INVESTIGATION: 'UNDER_INVESTIGATION',
+  };
 }
 
 export class Messages {

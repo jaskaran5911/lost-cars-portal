@@ -24,6 +24,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {AccountModule} from "./account/account.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {AccountModule} from "./account/account.module";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    SharedModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot({prefix: '', separator: ''}),
     FormsModule,

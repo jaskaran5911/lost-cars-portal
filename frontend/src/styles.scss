@@ -202,3 +202,8 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   align-items: center;
   justify-content: center;
 }
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}

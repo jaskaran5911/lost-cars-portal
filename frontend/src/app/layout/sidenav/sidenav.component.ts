@@ -54,6 +54,34 @@ export class SidenavComponent implements OnInit, OnDestroy {
         icon: 'people',
         visibility: this.isAdmin
       },
+      {
+        name: 'Register a Complaint',
+        type: 'link',
+        value: AppConfig.CREATE_COMPLAINT,
+        icon: 'add',
+        visibility: this.isUser
+      },
+      {
+        name: 'My Complaints',
+        type: 'link',
+        value: AppConfig.MY_COMPLAINT,
+        icon: 'assignment',
+        visibility: this.isUser
+      },
+      {
+        name: 'Responded Complaints',
+        type: 'link',
+        value: AppConfig.RESPONDED_COMPLAINT,
+        icon: 'rule',
+        visibility: this.isPoliceOfficer
+      },
+      {
+        name: 'All Complaints',
+        type: 'link',
+        value: AppConfig.ALL_COMPLAINT,
+        icon: 'assignment',
+        visibility: this.isPoliceOfficer || this.isAdmin
+      },
     ];
   }
 

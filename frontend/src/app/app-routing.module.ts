@@ -41,6 +41,10 @@ const routes: Routes = [
         data: {roles: [Roles.ROLE_ADMIN]},
         loadChildren: () => import('./protected/user/user.module').then(m => m.UserModule)
       },
+      {
+        path: 'complaint',
+        loadChildren: () => import('./protected/complaint/complaint.module').then(m => m.ComplaintModule)
+      },
     ]
   },
   {

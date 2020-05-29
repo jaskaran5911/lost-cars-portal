@@ -7,6 +7,7 @@ import {Subscription} from 'rxjs';
 import {Constant} from "../../shared/constant";
 import {MatDialog} from "@angular/material/dialog";
 import {ChangePasswordComponent} from "../../account/change-password/change-password.component";
+import {EditProfileModalComponent} from "../../account/edit-profile-modal/edit-profile-modal.component";
 
 @Component({
   selector: 'app-header',
@@ -46,6 +47,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   openChangePasswordModel() {
     this.dialog.open(ChangePasswordComponent, {
+      width: Constant.MODAL_WIDTH,
+    });
+  }
+
+  openEditProfileModel() {
+    this.dialog.open(EditProfileModalComponent, {
       width: Constant.MODAL_WIDTH,
     });
   }

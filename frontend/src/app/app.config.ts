@@ -15,6 +15,11 @@ export class AppConfig {
   // Role
   public static readonly ROLE_API = AppConfig.API + 'role';
 
+  // Complaint
+  public static readonly COMPLAINT_API = AppConfig.API + 'complaint';
+  public static readonly COMPLAINT_UPLOAD_API = AppConfig.COMPLAINT_API + '/upload/';
+  public static readonly COMPLAINT_DOWNLOAD_API = AppConfig.COMPLAINT_API + '/download/';
+
   /* *********************************************************
    Frontend URLs
    ********************************************************* */
@@ -30,5 +35,12 @@ export class AppConfig {
 
   // User
   public static readonly USER = '/user/';
+
+  // Complaint
+  public static readonly COMPLAINT = '/complaint/';
+  public static readonly CREATE_COMPLAINT = AppConfig.COMPLAINT + 'create';
+  public static readonly MY_COMPLAINT = AppConfig.COMPLAINT + 'my';
+  public static readonly ALL_COMPLAINT = AppConfig.COMPLAINT + 'all';
+  public static readonly RESPONDED_COMPLAINT = AppConfig.COMPLAINT + 'responded';
 
 }

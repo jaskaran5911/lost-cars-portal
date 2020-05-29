@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Response</h1>
+
+<div mat-dialog-content>
+  <h4 class="mat-card-subtitle">Complaint Status</h4>
+  <h5 class="mat-typography">{{data.complaint_status}}</h5>
+  <h4 class="mat-card-subtitle">Details</h4>
+  <h5 class="mat-typography">{{data.response_details || 'No information available'}}</h5>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end">
+  <button mat-flat-button (click)="closeModal()">Cancel</button>
+</div>

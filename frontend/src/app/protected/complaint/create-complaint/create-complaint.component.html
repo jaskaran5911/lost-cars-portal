@@ -1,0 +1,155 @@
+<mat-card class="mat-elevation-z1 m-auto w-90 mt-2 p-2">
+  <mat-card-header fxLayout="row" fxLayoutAlign="space-between center" class="mb-1">
+    <mat-card-title class="m-auto">Register a complaint</mat-card-title>
+  </mat-card-header>
+
+  <mat-divider></mat-divider>
+
+  <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
+
+    <mat-step [completed]="personalDetailsStep" [editable]="false">
+      <div fxLayout="row column" fxLayoutAlign="space-evenly center">
+        <form #personDetailsFrom="ngForm">
+          <ng-template matStepLabel>Fill out your details</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <label>
+              <input matInput placeholder="Title" name="title" [(ngModel)]="complaint.title" #title="ngModel" required>
+            </label>
+            <mat-error *ngIf="title.touched && title.invalid">
+              <small class="mat-text-warn" *ngIf="title?.errors.required">Title is required.</small>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <label>
+              <textarea matInput placeholder="Description" name="text" [(ngModel)]="complaint.text" #text="ngModel"
+                        required>
+              </textarea>
+            </label>
+            <mat-error *ngIf="text.touched && text.invalid">
+              <small class="mat-text-warn" *ngIf="text?.errors.required">Description is required.</small>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <label>
+              <input matInput placeholder="Address" name="address" [(ngModel)]="complaint.address" #address="ngModel"
+                     required>
+            </label>
+            <mat-error *ngIf="address.touched && address.invalid">
+              <small class="mat-text-warn" *ngIf="address?.errors.required">Address is required.</small>
+            </mat-error>
+          </mat-form-field>
+          <div fxLayout="row">
+            <mat-form-field appearance="outline" class="mr-1">
+              <mat-label>City</mat-label>
+              <label>
+                <input matInput placeholder="City" name="city" [(ngModel)]="complaint.city" #city="ngModel" required>
+              </label>
+              <mat-error *ngIf="city.touched && city.invalid">
+                <small class="mat-text-warn" *ngIf="city?.errors.required">City is required.</small>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <label>
+                <input matInput placeholder="State" name="state" [(ngModel)]="complaint.state" #state="ngModel"
+                       required>
+              </label>
+              <mat-error *ngIf="state.touched && state.invalid">
+                <small class="mat-text-warn" *ngIf="state?.errors.required">State is required.</small>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row">
+            <mat-form-field appearance="outline" class="mr-1">
+              <mat-label>Country</mat-label>
+              <label>
+                <input matInput placeholder="Country" name="country" [(ngModel)]="complaint.country" #country="ngModel"
+                       required>
+              </label>
+              <mat-error *ngIf="country.touched && country.invalid">
+                <small class="mat-text-warn" *ngIf="city?.errors.required">Country is required.</small>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Pin code</mat-label>
+              <label>
+                <input matInput type="number" placeholder="Pin code" name="pin_code" [(ngModel)]="complaint.pin_code"
+                       #pin_code="ngModel" required>
+              </label>
+              <mat-error *ngIf="pin_code.touched && pin_code.invalid">
+                <small class="mat-text-warn" *ngIf="pin_code?.errors.required">Pin code is required.</small>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-stroked-button color="primary" class="f-right"
+                    (click)="complaintDetails(stepper)"
+                    [ngClass]="personDetailsFrom.form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'"
+                    [disabled]="personDetailsFrom.form.invalid">
+              Next
+              <app-spinner *ngIf="spinnerService.visibility | async" class="d-inline-block ml-1"
+                           [diameter]="15"></app-spinner>
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="complaintStep" [editable]="false">
+      <div fxLayout="row column" fxLayoutAlign="space-evenly center">
+        <form #projectFrom="ngForm">
+          <ng-template matStepLabel>Vehicle Details</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Vehicle Number</mat-label>
+            <label>
+              <input matInput placeholder="Vehicle Number" name="vehicle_number" [(ngModel)]="complaint.vehicle_number"
+                     #vehicle_number="ngModel" required>
+            </label>
+            <mat-error *ngIf="vehicle_number.touched && vehicle_number.invalid">
+              <small class="mat-text-warn" *ngIf="vehicle_number?.errors.required">Vehicle Number is required.</small>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Vehicle Details</mat-label>
+            <label>
+              <textarea matInput placeholder="Vehicle Details" name="vehicle_details"
+                        [(ngModel)]="complaint.vehicle_details" #vehicle_details="ngModel" required></textarea>
+            </label>
+            <mat-error *ngIf="vehicle_details.touched && vehicle_details.invalid">
+              <small class="mat-text-warn" *ngIf="vehicle_details?.errors.required">Vehicle Details is required.</small>
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button mat-stroked-button color="primary" class="f-right"
+                    (click)="createComplaint(stepper)"
+                    [ngClass]="projectFrom.form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'"
+                    [disabled]="projectFrom.form.invalid">
+              Next
+              <app-spinner *ngIf="spinnerService.visibility | async" class="d-inline-block ml-1"
+                           [diameter]="15"></app-spinner>
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+
+    <mat-step [optional]="true">
+      <div fxLayout="row column" fxLayoutAlign="space-evenly center">
+        <form [formGroup]="uploadFile">
+          <ng-template matStepLabel>Upload files</ng-template>
+          <app-alert></app-alert>
+          <app-file-upload formControlName="file" [progress]="progress"></app-file-upload>
+          <ng-template class="d-none" *ngIf="hasError('file', 'requiredFileType')">🤡</ng-template>
+          <div>
+            <button mat-stroked-button color="primary" class="f-right mt-1" (click)="fileUpload()">Done</button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+</mat-card>

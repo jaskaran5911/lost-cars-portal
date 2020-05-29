@@ -16,6 +16,10 @@ export class UserService {
     return this.http.get(AppConfig.USER_API);
   }
 
+  getUser(id: number) {
+    return this.http.get(AppConfig.USER_API + '/' + id);
+  }
+
   getFilteredUsers(filter: FilterModel) {
     return this.http.get(AppConfig.USER_API, {params: new HttpParams().set('q', JSON.stringify(filter))});
   }

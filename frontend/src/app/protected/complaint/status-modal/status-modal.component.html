@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Update the status of complaint</h1>
+
+<form (ngSubmit)="updateStatusComplaint()" #statusForm="ngForm">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-select placeholder="Select Status" name="complaint_status"
+                  [(ngModel)]="data.complaint_status" #status="ngModel" required>
+        <mat-option [value]="COMPLAINT_STATUS.ACCEPTED">{{COMPLAINT_STATUS.ACCEPTED}}</mat-option>
+        <mat-option [value]="COMPLAINT_STATUS.UNDER_INVESTIGATION">{{COMPLAINT_STATUS.UNDER_INVESTIGATION}}</mat-option>
+        <mat-option [value]="COMPLAINT_STATUS.REJECTED">{{COMPLAINT_STATUS.REJECTED}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="status.touched && status.invalid">
+        <small class="mat-text-warn" *ngIf="status?.errors.required">Status is required.</small>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <textarea matInput placeholder="Comment" name="response_details"
+                  [(ngModel)]="data.response_details" #response_details="ngModel" required></textarea>
+      </label>
+      <mat-error *ngIf="response_details.touched && response_details.invalid">
+        <small class="mat-text-warn" *ngIf="response_details?.errors.required">Comment is required.</small>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions fxLayoutAlign="end">
+    <button mat-flat-button type="button" (click)="closeModal()">Cancel</button>
+    <button color="primary" mat-raised-button [disabled]="statusForm.form.invalid || isDisableBtn">
+      Submit
+    </button>
+  </div>
+</form>

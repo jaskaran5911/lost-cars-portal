@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Accept the complaint</h1>
+
+<div mat-dialog-content>
+  <h4 class="mat-typography">Are you sure to accept this complaint?</h4>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end">
+  <button mat-flat-button (click)="closeModal()">Cancel</button>
+  <button color="primary" mat-raised-button (click)="acceptComplaint()" [disabled]="isDisableBtn">Accept</button>
+</div>

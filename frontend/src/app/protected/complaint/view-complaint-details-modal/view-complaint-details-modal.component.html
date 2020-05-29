@@ -1,0 +1,90 @@
+<h1 mat-dialog-title>Details of {{data?.title}}</h1>
+
+<div mat-dialog-content>
+  <mat-nav-list>
+    <mat-list-item>
+      <mat-icon mat-list-icon>person</mat-icon>
+      <span mat-line><b>Complainer Name</b></span>
+      <span mat-line>{{data?.complaint_user?.name || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>email</mat-icon>
+      <span mat-line><b>Complainer Email</b></span>
+      <span mat-line>{{data?.complaint_user?.email || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>title</mat-icon>
+      <span mat-line><b>Complain Title</b></span>
+      <span mat-line>{{data.title || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>description</mat-icon>
+      <span mat-line><b>Description</b></span>
+      <span mat-line>{{data.text || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>location_on</mat-icon>
+      <span mat-line><b>Address</b></span>
+      <span mat-line>
+        {{data?.address + ', ' + data?.city + ', ' + data?.state + ', ' + data?.country + ' - ' + data?.pin_code}}
+      </span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>money</mat-icon>
+      <span mat-line><b>Vehicle number</b></span>
+      <span mat-line>{{data.vehicle_number || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>description</mat-icon>
+      <span mat-line><b>Vehicle details</b></span>
+      <span mat-line>{{data.vehicle_details || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>thumbs_up_down</mat-icon>
+      <span mat-line><b>Complaint Status</b></span>
+      <span mat-line>{{data.complaint_status || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>person</mat-icon>
+      <span mat-line><b>Responder Name</b></span>
+      <span mat-line>{{data?.responded_user?.name || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>email</mat-icon>
+      <span mat-line><b>Responder Email</b></span>
+      <span mat-line>{{data?.responded_user?.email || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>description</mat-icon>
+      <span mat-line><b>Response of Responder</b></span>
+      <span mat-line>{{data?.response_details || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>event</mat-icon>
+      <span mat-line><b>Created At</b></span>
+      <span mat-line>{{(data.created_at | date: 'long') || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>event</mat-icon>
+      <span mat-line><b>Last Updated At</b></span>
+      <span mat-line>{{(data.updated_at | date: 'long') || 'Not available'}}</span>
+    </mat-list-item>
+
+  </mat-nav-list>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end">
+  <button mat-flat-button (click)="closeModal()">Cancel</button>
+</div>

@@ -15,12 +15,14 @@ import {SpinnerModule} from '../layout/spinner/spinner.module';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { RegistrationComponent } from './registration/registration.component';
+import {EditProfileModalComponent} from "./edit-profile-modal/edit-profile-modal.component";
 
 @NgModule({
   declarations: [
     LoginComponent,
     ChangePasswordComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    EditProfileModalComponent
   ],
   imports: [
     RouterModule.forChild(accountRoute),
@@ -37,7 +39,8 @@ import { RegistrationComponent } from './registration/registration.component';
     MatDialogModule
   ],
   entryComponents: [
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    EditProfileModalComponent
   ],
   providers: [
     LoginService

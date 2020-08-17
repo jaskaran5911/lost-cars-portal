@@ -11,4 +11,4 @@ def get_security_payload(user):
 
 
 def exclude_columns():
-    return ['password']
+    return ['password', 'comments']

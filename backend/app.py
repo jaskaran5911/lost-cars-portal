@@ -5,6 +5,8 @@ from flask_praetorian import Praetorian
 from flask_restless import APIManager
 from flask_security import Security
 
+import flask_monitoringdashboard as dashboard
+
 from src.main.controller import load_controller
 from src.main.dto import load_dto
 from src.main.exception import load_exception
@@ -14,7 +16,7 @@ from src.main.model import db, load_model, db_user_data_store
 from src.main.security import load_security
 from src.main.service import load_service
 from src.main.util import load_utils
-from src.resources.config import Config
+from src.resources.config import Config, BASE_DIR
 
 app = Flask(__name__)
 app.config.from_object(Config())
@@ -60,6 +62,10 @@ with app.app_context():
     load_dto()
     load_service()
 
+    # System Profiler Monitor
+    dashboard.config.init_from(file=BASE_DIR + '/profiler-config.cfg')
+    dashboard.bind(app)
+
     # Create a user admin
     @app.before_first_request
     def create_admin_user():
@@ -80,4 +86,4 @@ with app.app_context():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')

@@ -13,3 +13,5 @@ Flask-Migrate
 Flask-Script
 flask-cors
 flask-praetorian
+Flask-MonitoringDashboard
+email_validator

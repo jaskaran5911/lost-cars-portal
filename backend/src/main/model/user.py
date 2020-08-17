@@ -19,6 +19,7 @@ class User(Entity, db.Model, UserMixin):
     responded_by = db.relationship(
         'Complaint', foreign_keys='Complaint.responded_by', backref='responded_user', lazy=True
     )
+    comments = db.relationship('Comment', backref='users', lazy=True)
 
     last_login_at = db.Column(db.DateTime(), nullable=True)
     current_login_at = db.Column(db.DateTime(), nullable=True)

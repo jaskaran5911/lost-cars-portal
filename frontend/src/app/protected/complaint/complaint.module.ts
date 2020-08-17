@@ -32,6 +32,7 @@ import { ViewComplaintDetailsModalComponent } from './view-complaint-details-mod
 import {MatListModule} from "@angular/material/list";
 import { RespondedComplaintsComponent } from './responded-complaints/responded-complaints.component';
 import { StatusModalComponent } from './status-modal/status-modal.component';
+import {CommentModule} from "../comment/comment.module";
 
 
 @NgModule({
@@ -45,6 +46,9 @@ import { StatusModalComponent } from './status-modal/status-modal.component';
     ViewComplaintDetailsModalComponent,
     RespondedComplaintsComponent,
     StatusModalComponent
+  ],
+  exports: [
+    DateAgoPipe
   ],
   imports: [
     RouterModule.forChild(complaintRoutes),
@@ -70,7 +74,8 @@ import { StatusModalComponent } from './status-modal/status-modal.component';
     MatPaginatorModule,
     MatDialogModule,
     MatTooltipModule,
-    MatListModule
+    MatListModule,
+    CommentModule
   ]
 })
 export class ComplaintModule { }

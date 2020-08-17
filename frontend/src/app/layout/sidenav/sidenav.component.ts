@@ -82,6 +82,13 @@ export class SidenavComponent implements OnInit, OnDestroy {
         icon: 'assignment',
         visibility: this.isPoliceOfficer || this.isAdmin
       },
+      {
+        name: 'System Profiler',
+        type: 'link',
+        value: AppConfig.SYSTEM_PROFILE,
+        icon: 'bar_chart',
+        visibility: this.isAdmin
+      }
     ];
   }
 

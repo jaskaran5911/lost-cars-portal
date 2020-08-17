@@ -25,6 +25,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {AccountModule} from "./account/account.module";
 import {SharedModule} from "./shared/shared.module";
+import { ViewCommentComponent } from './protected/comment/view-comment/view-comment.component';
+import {ComplaintModule} from "./protected/complaint/complaint.module";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {SharedModule} from "./shared/shared.module";
     HeaderComponent,
     HomeComponent,
     SidenavComponent,
+    ViewCommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import {SharedModule} from "./shared/shared.module";
     MatListModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ComplaintModule
   ],
   providers: [
     {

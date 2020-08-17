@@ -1,5 +1,6 @@
 export class AppConfig {
   public static readonly API = 'api/';
+  public static readonly EVAL = AppConfig.API + 'eval/';
 
   // Account
   public static readonly AUTH_API = 'auth';
@@ -19,6 +20,13 @@ export class AppConfig {
   public static readonly COMPLAINT_API = AppConfig.API + 'complaint';
   public static readonly COMPLAINT_UPLOAD_API = AppConfig.COMPLAINT_API + '/upload/';
   public static readonly COMPLAINT_DOWNLOAD_API = AppConfig.COMPLAINT_API + '/download/';
+
+  // Comment
+  public static readonly COMMENT_API = AppConfig.API + 'comment';
+  public static readonly COMMENT_EVAL_API = AppConfig.EVAL + 'comment';
+
+  // System Profile
+  public static readonly SYSTEM_PROFILE_API = 'system-profiler';
 
   /* *********************************************************
    Frontend URLs
@@ -42,5 +50,8 @@ export class AppConfig {
   public static readonly MY_COMPLAINT = AppConfig.COMPLAINT + 'my';
   public static readonly ALL_COMPLAINT = AppConfig.COMPLAINT + 'all';
   public static readonly RESPONDED_COMPLAINT = AppConfig.COMPLAINT + 'responded';
+
+  // System Profile
+  public static readonly SYSTEM_PROFILE = '/system-profiler/';
 
 }

@@ -15,6 +15,8 @@ import {StorageService} from "../../../shared/service/storage.service";
 import {ComplaintService} from "../complaint.service";
 import {ResponseModalComponent} from "./response-modal/response-modal.component";
 import {ViewComplaintDetailsModalComponent} from "../view-complaint-details-modal/view-complaint-details-modal.component";
+import {AddCommentComponent} from "../../comment/add-comment/add-comment.component";
+import {ViewCommentComponent} from "../../comment/view-comment/view-comment.component";
 
 @Component({
   selector: 'app-my-complaint',
@@ -92,6 +94,20 @@ export class MyComplaintComponent implements OnInit, OnDestroy {
     this.dialog.open(ResponseModalComponent, {
       width: Constant.MODAL_WIDTH,
       data: complaint
+    });
+  }
+
+  openAddCommentModal(complaintId: number) {
+    this.dialog.open(AddCommentComponent, {
+      width: Constant.MODAL_WIDTH,
+      data: complaintId
+    });
+  }
+
+  openViewCommentModal(complaintId: number) {
+    this.dialog.open(ViewCommentComponent, {
+      width: Constant.MODAL_WIDTH,
+      data: complaintId
     });
   }
 

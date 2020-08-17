@@ -16,6 +16,7 @@ export class Constant {
   public static readonly LIKE = 'like';
   public static readonly EMAIL = 'email';
   public static readonly STATUS = 'status';
+  public static readonly COMPLAINT = 'complaint';
   public static readonly COMPLAINT_BY = 'complaint_by';
   public static readonly RESPONDED_BY = 'responded_by';
   public static readonly UPDATED_AT = 'updated_at';

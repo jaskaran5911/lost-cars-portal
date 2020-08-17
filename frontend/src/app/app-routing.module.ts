@@ -45,6 +45,12 @@ const routes: Routes = [
         path: 'complaint',
         loadChildren: () => import('./protected/complaint/complaint.module').then(m => m.ComplaintModule)
       },
+      {
+        path: 'system-profiler',
+        canActivate: [AuthGuardService, RoleGuardService],
+        data: {roles: [Roles.ROLE_ADMIN]},
+        loadChildren: () => import('./protected/system-profiler/system-profiler.module').then(m => m.SystemProfilerModule)
+      },
     ]
   },
   {

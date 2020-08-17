@@ -14,6 +14,8 @@ import {AppConfig} from "../../../app.config";
 import {environment} from "../../../../environments/environment";
 import {AcceptModalComponent} from "../accept-modal/accept-modal.component";
 import {ViewComplaintDetailsModalComponent} from "../view-complaint-details-modal/view-complaint-details-modal.component";
+import {AddCommentComponent} from "../../comment/add-comment/add-comment.component";
+import {ViewCommentComponent} from "../../comment/view-comment/view-comment.component";
 
 @Component({
   selector: 'app-all-complaints',
@@ -102,6 +104,20 @@ export class AllComplaintsComponent implements OnInit, OnDestroy {
       if (result) {
         this.getFilteredComplaints();
       }
+    });
+  }
+
+  openAddCommentModal(complaintId: number) {
+    this.dialog.open(AddCommentComponent, {
+      width: Constant.MODAL_WIDTH,
+      data: complaintId
+    });
+  }
+
+  openViewCommentModal(complaintId: number) {
+    this.dialog.open(ViewCommentComponent, {
+      width: Constant.MODAL_WIDTH,
+      data: complaintId
     });
   }
 

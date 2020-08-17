@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Add comment</h1>
+
+<div mat-dialog-content>
+  <app-alert></app-alert>
+
+  <form #actionForm="ngForm" (ngSubmit)="saveComment()">
+    <mat-form-field>
+      <label>
+        <textarea matInput placeholder="Comment" name="comment" [(ngModel)]="commentModel.text" #comment="ngModel" required>
+        </textarea>
+      </label>
+      <mat-error *ngIf="comment.touched && comment.invalid">
+        <small class="mat-text-warn" *ngIf="comment?.errors.required">Comment is required.</small>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-slide-toggle color="primary" name="sent_email" [(ngModel)]="commentModel.sent_email">
+      Send an email to Police
+    </mat-slide-toggle>
+
+  </form>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end">
+  <button mat-flat-button (click)="closeModal()">Cancel</button>
+  <button color="primary" mat-raised-button (click)="saveComment()"
+          [ngClass]="actionForm.form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'"
+          [disabled]="actionForm.form.invalid || isDisableBtn">
+    Submit
+  </button>
+</div>

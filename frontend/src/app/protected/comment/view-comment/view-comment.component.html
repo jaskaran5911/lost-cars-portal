@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>View comments</h1>
+
+<div mat-dialog-content>
+  <mat-card class="mat-elevation-z0" *ngFor="let comment of commentsModel.objects">
+    <mat-card-header>
+      <div mat-card-avatar class="comment-header-image"></div>
+      <mat-card-title class="cursor-pointer text-link-color" [matTooltip]="comment?.users.email"
+                      [routerLink]="!loggedInRoles.isAdmin? [] : USER_URL"
+                      [queryParams]="!loggedInRoles.isAdmin? {} : getUserURLForID(comment?.users.id)">
+        {{comment?.users.name | titlecase}}
+      </mat-card-title>
+      <mat-card-subtitle matTooltip="commented at">
+        {{(comment?.created_at | dateAgo) || 'Not available'}}
+      </mat-card-subtitle>
+      <mat-icon matTooltip="Email sent" *ngIf="comment.sent_email">mark_email_read</mat-icon>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{comment?.text}}</p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+  </mat-card>
+
+  <div *ngIf="commentsModel?.objects?.length === 0">
+    <h3 class="mat-card-subtitle text-center"> No comments.</h3>
+  </div>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end">
+  <button mat-flat-button (click)="closeModal()">Close</button>
+</div>

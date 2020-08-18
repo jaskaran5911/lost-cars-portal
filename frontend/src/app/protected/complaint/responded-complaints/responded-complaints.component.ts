@@ -16,6 +16,8 @@ import {ViewComplaintDetailsModalComponent} from "../view-complaint-details-moda
 import {AcceptModalComponent} from "../accept-modal/accept-modal.component";
 import {environment} from "../../../../environments/environment";
 import {StatusModalComponent} from "../status-modal/status-modal.component";
+import { AddCommentComponent } from '../../comment/add-comment/add-comment.component';
+import { ViewCommentComponent } from '../../comment/view-comment/view-comment.component';
 
 @Component({
   selector: 'app-accepted-complaints',
@@ -97,6 +99,20 @@ export class RespondedComplaintsComponent implements OnInit, OnDestroy {
     this.dialog.open(ViewComplaintDetailsModalComponent, {
       width: Constant.MODAL_WIDTH,
       data: complaint
+    });
+  }
+
+  openAddCommentModal(complaintId: number) {
+    this.dialog.open(AddCommentComponent, {
+      width: Constant.MODAL_WIDTH,
+      data: complaintId
+    });
+  }
+
+  openViewCommentModal(complaintId: number) {
+    this.dialog.open(ViewCommentComponent, {
+      width: Constant.MODAL_WIDTH,
+      data: complaintId
     });
   }
 

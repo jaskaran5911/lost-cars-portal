@@ -87,6 +87,14 @@
               <mat-icon class="text-green">edit_attributes</mat-icon>
               <span>Update Status</span>
             </button>
+            <button mat-menu-item (click)="openAddCommentModal(row.id)">
+              <mat-icon>add_comment</mat-icon>
+              <span>Add Comment</span>
+            </button>
+            <button mat-menu-item (click)="openViewCommentModal(row.id)">
+              <mat-icon>comment</mat-icon>
+              <span>View Comments</span>
+            </button>
             <button mat-menu-item (click)="downloadFile(row)" [disabled]="!row?.file_name">
               <mat-icon>get_app</mat-icon>
               <span>Download attachment</span>

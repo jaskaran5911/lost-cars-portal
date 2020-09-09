@@ -6,7 +6,9 @@ from src.main.http.cros_headers import add_cors_headers
 from src.main.security.authentication import auth_func
 from src.main.model.user import User as UserModel
 from src.main.security.authorization import role_admin, role_police_officer
+from src.main.service.flagged_user import update_flagged_user_action
 
+# User API object
 user_api = api_manager.create_api_blueprint(
     UserModel,
     methods=['GET', 'POST', 'PUT', 'PATCH'],
@@ -20,6 +22,9 @@ user_api = api_manager.create_api_blueprint(
         PUT_MANY=[auth_func, role_admin],
         PATCH_SINGLE=[auth_func],
         PATCH_MANY=[auth_func, role_admin]
+    ),
+    postprocessors=dict(
+        PUT_SINGLE=[update_flagged_user_action]
     )
 )
 

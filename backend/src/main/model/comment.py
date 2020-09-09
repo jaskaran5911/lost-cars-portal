@@ -2,6 +2,7 @@ from src.main.model import db
 from src.main.model.entity import Entity
 
 
+# Comment Model Class
 class Comment(Entity, db.Model):
     complaint = db.Column(db.Integer, db.ForeignKey('complaint.id'), nullable=True)
     text = db.Column(db.Text)

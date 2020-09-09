@@ -7,6 +7,7 @@ from src.main.model.roles_user import roles_users
 from src.main.dto.user import get_security_payload as get_security_payload_dto
 
 
+# User Model Class
 class User(Entity, db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True)
     name = db.Column(db.String(80))
@@ -20,6 +21,13 @@ class User(Entity, db.Model, UserMixin):
         'Complaint', foreign_keys='Complaint.responded_by', backref='responded_user', lazy=True
     )
     comments = db.relationship('Comment', backref='users', lazy=True)
+    flagged_counter = db.Column(db.Integer, nullable=True, default=0)
+    flagged_user = db.relationship(
+        'FlaggedUser', foreign_keys='FlaggedUser.user', backref='flagged_user', lazy=True
+    )
+    flagged_by = db.relationship(
+        'FlaggedUser', foreign_keys='FlaggedUser.flagged_by', backref='flagged_user_by', lazy=True
+    )
 
     last_login_at = db.Column(db.DateTime(), nullable=True)
     current_login_at = db.Column(db.DateTime(), nullable=True)

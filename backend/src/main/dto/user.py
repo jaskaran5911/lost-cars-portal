@@ -1,6 +1,7 @@
 from flask import jsonify
 
 
+# create response object
 def get_security_payload(user):
     return jsonify({
         'id': user.id,
@@ -10,5 +11,10 @@ def get_security_payload(user):
     })
 
 
+# Remove the columns from the response
 def exclude_columns():
-    return ['password', 'comments']
+    return [
+        'password',
+        'comments',
+        'flagged_counter'
+    ]

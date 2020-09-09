@@ -3,6 +3,7 @@ from datetime import datetime
 from src.main.model import db
 
 
+# Base Model Class
 class Entity(object):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime)

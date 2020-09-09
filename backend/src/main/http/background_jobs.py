@@ -1,6 +1,7 @@
 from celery import Celery
 
 
+# to run the progress in the background
 def make_celery(app):
     celery = Celery(
         app.import_name,

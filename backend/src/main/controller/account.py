@@ -11,6 +11,7 @@ from src.main.service.account import refresh_token as refresh_token_service
 from src.main.dto.account import logout as logout_dto
 
 
+# Login API
 @app.route('/auth', methods=['POST'])
 def auth():
     return auth_service(
@@ -18,6 +19,7 @@ def auth():
     )
 
 
+# Signup API
 @app.route('/sign-up', methods=['POST'])
 def signup():
     return signup_service(
@@ -25,17 +27,20 @@ def signup():
     )
 
 
+# Refresh the JWT API
 @app.route('/refresh-token', methods=['GET'])
 def refresh_token():
     return jsonify(refresh_token_service())
 
 
+# Get the account details of the logged in user.
 @app.route('/account-details', methods=['GET'])
 @auth_required
 def account_details():
     return account_details_service()
 
 
+# Change the password API
 @app.route('/change-password', methods=['PATCH'])
 @auth_required
 def change_password():
@@ -44,6 +49,7 @@ def change_password():
     )
 
 
+# Logout API
 @app.route('/logout', methods=['GET'])
 @auth_required
 def logout():

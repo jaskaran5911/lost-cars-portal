@@ -8,10 +8,12 @@ from app import app
 from src.main.exception.exception import handle500, handle400
 
 
+# check the uploaded file extension
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config.get('ALLOWED_EXTENSIONS')
 
 
+# manage the uploaded file
 def upload_file(file):
     if file and allowed_file(file.filename):
         try:
@@ -25,6 +27,7 @@ def upload_file(file):
         return handle400()
 
 
+# download the file
 def get_uploaded_file(filename):
     try:
         return send_from_directory(app.config['UPLOAD_FOLDER'], filename)

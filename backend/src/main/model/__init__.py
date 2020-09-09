@@ -11,6 +11,7 @@ def load_model():
     import src.main.model.roles_user
     import src.main.model.complaint
     import src.main.model.comment
+    import src.main.model.flagged_user
 
 
 def db_user_data_store():

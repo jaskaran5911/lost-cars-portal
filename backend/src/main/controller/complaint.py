@@ -9,6 +9,7 @@ from src.main.security.authorization import role_admin, role_police_officer
 from src.main.service.complaint import complaint_file_upload as complaint_file_upload_service
 from src.main.util.file_upload import get_uploaded_file as get_uploaded_file_service
 
+# Complaint API object
 complaint_api = api_manager.create_api_blueprint(
     ComplaintModel,
     methods=['GET', 'POST', 'PUT', 'PATCH'],
@@ -29,11 +30,13 @@ complaint_api.after_request(add_cors_headers)
 app.register_blueprint(complaint_api)
 
 
+# Complaint File upload API
 @app.route('/api/complaint/upload/<int:complaint_id>', methods=['PATCH'])
 def complaint_file_upload(complaint_id):
     return complaint_file_upload_service(complaint_id)
 
 
+# Complaint File download API
 @app.route('/api/complaint/download/<path:filename>', methods=['GET'])
 def get_uploaded_file(filename):
     return get_uploaded_file_service(filename)

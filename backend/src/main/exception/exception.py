@@ -2,6 +2,8 @@ from flask_restless import ProcessingException
 
 from src.resources.constant import STATUS_MESSAGE, STATUS_CODE
 
+# Error objects handlers
+
 
 def handle400():
     return ProcessingException(description=STATUS_MESSAGE.BAD_REQUEST, code=STATUS_CODE.ER_400)

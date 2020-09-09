@@ -7,6 +7,7 @@ from src.main.model.complaint import Complaint
 from src.main.util.file_upload import upload_file
 
 
+# File upload service
 def complaint_file_upload(complaint_id):
     if request.method == 'PATCH':
         if 'file' not in request.files:

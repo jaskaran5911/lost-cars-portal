@@ -2,6 +2,7 @@ from src.main.model import db
 from src.main.model.entity import Entity
 
 
+# Complaint Model Class
 class Complaint(Entity, db.Model):
     title = db.Column(db.String(50))
     text = db.Column(db.Text)

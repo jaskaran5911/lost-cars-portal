@@ -7,6 +7,7 @@ from src.main.security.authentication import generate_jwt_token, get_jwt_token_r
 from src.resources.constant import ERROR_MESSAGE, SUCCESS_MESSAGE
 
 
+# Login auth service
 def auth(param):
     email = param.get('email', None)
     password = param.get('password', None)
@@ -21,6 +22,7 @@ def auth(param):
     return token
 
 
+# Signup service
 def signup(param):
     name = param.get('name', None)
     email = param.get('email', None)
@@ -50,6 +52,7 @@ def signup(param):
         )), 400
 
 
+# get account details service
 def account_details():
     from flask_praetorian import current_user
 
@@ -60,12 +63,14 @@ def account_details():
     return handle401()
 
 
+# get refresh JWT service
 def refresh_token():
     return dict(
         access_token=get_jwt_token_refresh()
     )
 
 
+# change password service
 def change_password(param):
     from flask_praetorian import current_user
     from app import jwt
@@ -93,6 +98,7 @@ def change_password(param):
     ))
 
 
+# logout service
 def logout():
     from flask_login import current_user
 

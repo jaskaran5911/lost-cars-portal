@@ -6,6 +6,7 @@ from src.main.http.cros_headers import add_cors_headers
 from src.main.model.comment import Comment as CommentModel
 from src.main.security.authentication import auth_func
 
+# Comment API object
 comment_api = api_manager.create_api_blueprint(
     CommentModel,
     methods=['GET', 'POST'],

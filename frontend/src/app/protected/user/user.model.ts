@@ -14,6 +14,7 @@ export class User {
   email: string;
   password: string;
   active: boolean;
+  flagged_counter: number;
   created_at: string;
   current_login_at: string;
   current_login_ip: string;

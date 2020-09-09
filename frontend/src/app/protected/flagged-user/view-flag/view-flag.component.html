@@ -1,0 +1,64 @@
+<h1 mat-dialog-title>Details of {{data?.flagged_user?.name}}</h1>
+
+<div mat-dialog-content>
+  <mat-nav-list>
+    <mat-list-item>
+      <mat-icon mat-list-icon>person</mat-icon>
+      <span mat-line><b>User Name</b></span>
+      <span mat-line>{{data?.flagged_user?.name || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>email</mat-icon>
+      <span mat-line><b>User's Email</b></span>
+      <span mat-line>{{data?.flagged_user?.email || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>description</mat-icon>
+      <span mat-line><b>Reason</b></span>
+      <span mat-line>{{data?.text || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>flag</mat-icon>
+      <span mat-line><b>Flagged count</b></span>
+      <span mat-line>{{data?.flagged_user?.flagged_counter || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>rule</mat-icon>
+      <span mat-line><b>Action</b></span>
+      <span mat-line>{{data?.action || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>person</mat-icon>
+      <span mat-line><b>Report by</b></span>
+      <span mat-line>{{data?.flagged_user_by?.name || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>email</mat-icon>
+      <span mat-line><b>Email of Report by</b></span>
+      <span mat-line>{{data?.flagged_user_by?.email || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>event</mat-icon>
+      <span mat-line><b>Created At</b></span>
+      <span mat-line>{{(data.created_at | date: 'long') || 'Not available'}}</span>
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon mat-list-icon>event</mat-icon>
+      <span mat-line><b>Last Updated At</b></span>
+      <span mat-line>{{(data.updated_at | date: 'long') || 'Not available'}}</span>
+    </mat-list-item>
+
+  </mat-nav-list>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end">
+  <button mat-flat-button (click)="closeModal()">Close</button>
+</div>

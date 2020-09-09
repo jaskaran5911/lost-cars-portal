@@ -16,6 +16,7 @@ export class Constant {
   public static readonly LIKE = 'like';
   public static readonly EMAIL = 'email';
   public static readonly STATUS = 'status';
+  public static readonly ACTIVE = 'active';
   public static readonly COMPLAINT = 'complaint';
   public static readonly COMPLAINT_BY = 'complaint_by';
   public static readonly RESPONDED_BY = 'responded_by';
@@ -26,11 +27,19 @@ export class Constant {
     ACCEPTED: 'ACCEPTED',
     REJECTED: 'REJECTED',
     UNDER_INVESTIGATION: 'UNDER_INVESTIGATION',
+    CLOSED: 'CLOSED'
+  };
+
+  public static readonly FLAGGED_USER_STATUS = {
+    DEACTIVATED: 'DEACTIVATED',
+    REACTIVATED: 'REACTIVATED',
+    PENDING: 'PENDING',
   };
 }
 
 export class Messages {
   public static readonly STATUS_CHANGED_SUCCESSFULLY = 'Status changed Successfully!!!';
+  public static readonly REPORTED_SUCCESSFULLY = 'User reported Successfully!!!';
   public static readonly PASSWORD_NOT_MATCHED = 'Password not matched';
 }
 

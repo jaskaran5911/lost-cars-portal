@@ -51,6 +51,12 @@ const routes: Routes = [
         data: {roles: [Roles.ROLE_ADMIN]},
         loadChildren: () => import('./protected/system-profiler/system-profiler.module').then(m => m.SystemProfilerModule)
       },
+      {
+        path: 'flagged-user',
+        canActivate: [AuthGuardService, RoleGuardService],
+        data: {roles: [Roles.ROLE_ADMIN]},
+        loadChildren: () => import('./protected/flagged-user/flagged-user.module').then(m => m.FlaggedUserModule)
+      }
     ]
   },
   {

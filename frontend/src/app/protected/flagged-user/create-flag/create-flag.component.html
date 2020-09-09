@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Report the user</h1>
+
+<div mat-dialog-content>
+  <app-alert></app-alert>
+
+  <form #actionForm="ngForm" (ngSubmit)="saveFlaggedUser()">
+    <mat-form-field>
+      <label>
+        <textarea matInput placeholder="Reason" name="text" [(ngModel)]="flaggedUserModel.text" #comment="ngModel" required>
+        </textarea>
+      </label>
+      <mat-error *ngIf="comment.touched && comment.invalid">
+        <small class="mat-text-warn" *ngIf="comment?.errors.required">Reason is required.</small>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end">
+  <button mat-flat-button (click)="closeModal()">Cancel</button>
+  <button color="primary" mat-raised-button (click)="saveFlaggedUser()"
+          [ngClass]="actionForm.form.invalid ? 'cursor-not-allowed' : 'cursor-pointer'"
+          [disabled]="actionForm.form.invalid || isDisableBtn">
+    Submit
+  </button>
+</div>

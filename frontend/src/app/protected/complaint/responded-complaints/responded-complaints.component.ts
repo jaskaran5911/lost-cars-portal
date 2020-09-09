@@ -5,7 +5,7 @@ import {Subscription} from "rxjs";
 import {Filter, FilterModel, OrderBy} from "../../../shared/model/filter.model";
 import {MatTableDataSource} from "@angular/material/table";
 import {allComplaintDisplayColumns, Complaint, ComplaintModel} from "../complaint.model";
-import {Constant} from "../../../shared/constant";
+import {Constant, Messages} from "../../../shared/constant";
 import {SpinnerService} from "../../../shared/service/spinner.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
@@ -13,11 +13,12 @@ import {StorageService} from "../../../shared/service/storage.service";
 import {ComplaintService} from "../complaint.service";
 import {AppConfig} from "../../../app.config";
 import {ViewComplaintDetailsModalComponent} from "../view-complaint-details-modal/view-complaint-details-modal.component";
-import {AcceptModalComponent} from "../accept-modal/accept-modal.component";
 import {environment} from "../../../../environments/environment";
 import {StatusModalComponent} from "../status-modal/status-modal.component";
 import { AddCommentComponent } from '../../comment/add-comment/add-comment.component';
 import { ViewCommentComponent } from '../../comment/view-comment/view-comment.component';
+import {CreateFlagComponent} from "../../flagged-user/create-flag/create-flag.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-accepted-complaints',
@@ -32,7 +33,6 @@ export class RespondedComplaintsComponent implements OnInit, OnDestroy {
   filterModel: FilterModel = new FilterModel();
   dataSource: MatTableDataSource<Complaint>;
   displayedColumns = allComplaintDisplayColumns;
-  COMPLAINT_STATUS = Constant.COMPLAINT_STATUS;
   pageSize = Constant.PAGE_SIZE_LIST;
   pinCodeFilterValue: number;
   isFiltered = false;
@@ -43,7 +43,8 @@ export class RespondedComplaintsComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private router: Router,
     private storageService: StorageService,
-    private complaintService: ComplaintService
+    private complaintService: ComplaintService,
+    private snackBar: MatSnackBar
   ) {
     this.filterModel.order_by.push(new OrderBy());
   }
@@ -113,6 +114,18 @@ export class RespondedComplaintsComponent implements OnInit, OnDestroy {
     this.dialog.open(ViewCommentComponent, {
       width: Constant.MODAL_WIDTH,
       data: complaintId
+    });
+  }
+
+  openFlagUserModal(userId: number) {
+    this.dialog.open(CreateFlagComponent, {
+      width: Constant.MODAL_WIDTH,
+      data: userId
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.snackBar.open(Messages.REPORTED_SUCCESSFULLY);
+        this.getFilteredComplaints();
+      }
     });
   }
 

@@ -99,6 +99,10 @@
               <mat-icon>get_app</mat-icon>
               <span>Download attachment</span>
             </button>
+            <button mat-menu-item (click)="openFlagUserModal(row.complaint_by)" *ngIf="row?.complaint_user?.active">
+              <mat-icon>flag</mat-icon>
+              <span>Report this user</span>
+            </button>
           </mat-menu>
         </td>
       </ng-container>

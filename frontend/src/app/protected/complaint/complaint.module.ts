@@ -33,6 +33,7 @@ import {MatListModule} from "@angular/material/list";
 import { RespondedComplaintsComponent } from './responded-complaints/responded-complaints.component';
 import { StatusModalComponent } from './status-modal/status-modal.component';
 import {CommentModule} from "../comment/comment.module";
+import {FlaggedUserModule} from "../flagged-user/flagged-user.module";
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import {CommentModule} from "../comment/comment.module";
     MatDialogModule,
     MatTooltipModule,
     MatListModule,
-    CommentModule
+    CommentModule,
+    FlaggedUserModule
   ]
 })
 export class ComplaintModule { }

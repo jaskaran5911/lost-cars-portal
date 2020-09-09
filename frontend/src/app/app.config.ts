@@ -25,6 +25,10 @@ export class AppConfig {
   public static readonly COMMENT_API = AppConfig.API + 'comment';
   public static readonly COMMENT_EVAL_API = AppConfig.EVAL + 'comment';
 
+  // Flagged User
+  public static readonly FLAGGED_USER_API = AppConfig.API + 'flagged-user';
+  public static readonly FLAGGED_USER_EVAL_API = AppConfig.EVAL + 'flagged-user';
+
   // System Profile
   public static readonly SYSTEM_PROFILE_API = 'system-profiler';
 
@@ -43,6 +47,9 @@ export class AppConfig {
 
   // User
   public static readonly USER = '/user/';
+
+  // Flagged User
+  public static readonly FLAGGED_USER = '/flagged-user/';
 
   // Complaint
   public static readonly COMPLAINT = '/complaint/';

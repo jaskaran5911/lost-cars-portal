@@ -5,7 +5,7 @@ import {Subscription} from "rxjs";
 import {Filter, FilterModel, OrderBy} from "../../../shared/model/filter.model";
 import {MatTableDataSource} from "@angular/material/table";
 import {allComplaintDisplayColumns, Complaint, ComplaintModel} from "../complaint.model";
-import {Constant} from "../../../shared/constant";
+import {Constant, Messages} from "../../../shared/constant";
 import {SpinnerService} from "../../../shared/service/spinner.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
@@ -16,6 +16,8 @@ import {AcceptModalComponent} from "../accept-modal/accept-modal.component";
 import {ViewComplaintDetailsModalComponent} from "../view-complaint-details-modal/view-complaint-details-modal.component";
 import {AddCommentComponent} from "../../comment/add-comment/add-comment.component";
 import {ViewCommentComponent} from "../../comment/view-comment/view-comment.component";
+import {CreateFlagComponent} from "../../flagged-user/create-flag/create-flag.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-all-complaints',
@@ -40,7 +42,8 @@ export class AllComplaintsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private router: Router,
-    private complaintService: ComplaintService
+    private complaintService: ComplaintService,
+    private snackBar: MatSnackBar
   ) {
     this.filterModel.order_by.push(new OrderBy());
   }
@@ -118,6 +121,18 @@ export class AllComplaintsComponent implements OnInit, OnDestroy {
     this.dialog.open(ViewCommentComponent, {
       width: Constant.MODAL_WIDTH,
       data: complaintId
+    });
+  }
+
+  openFlagUserModal(userId: number) {
+    this.dialog.open(CreateFlagComponent, {
+      width: Constant.MODAL_WIDTH,
+      data: userId
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.snackBar.open(Messages.REPORTED_SUCCESSFULLY);
+        this.getFilteredComplaints();
+      }
     });
   }
 

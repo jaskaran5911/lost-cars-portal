@@ -7,6 +7,19 @@ from src.main.model.complaint import Complaint as ComplaintModel
 from src.main.security.authentication import auth_func
 from src.main.security.authorization import role_admin, role_police_officer
 from src.main.service.complaint import complaint_file_upload as complaint_file_upload_service
+from src.main.service.complaint import get_complaint_count_by_status as get_complaint_count_by_status_service
+from src.main.service.complaint import \
+    get_complaint_count_by_status_with_responded_by as get_complaint_count_by_status_with_responded_by_service
+from src.main.service.complaint import \
+    get_complaint_count_by_status_with_complaint_by as get_complaint_count_by_status_with_complaint_by_service
+from src.main.service.complaint import \
+    get_complaint_count_by_status_and_responded_by as get_complaint_count_by_status_and_responded_by_service
+from src.main.service.complaint import \
+    get_complaint_count_by_status_and_complaint_by as get_complaint_count_by_status_and_complaint_by_service
+from src.main.service.complaint import \
+    get_complaint_count_by_responded_by as get_complaint_count_by_responded_by_service
+from src.main.service.complaint import \
+    get_complaint_count_by_complaint_by as get_complaint_count_by_complaint_by_service
 from src.main.util.file_upload import get_uploaded_file as get_uploaded_file_service
 
 # Complaint API object
@@ -15,6 +28,7 @@ complaint_api = api_manager.create_api_blueprint(
     methods=['GET', 'POST', 'PUT', 'PATCH'],
     exclude_columns=exclude_columns(),
     validation_exceptions=[ValidationError],
+    allow_functions=True,
     preprocessors=dict(
         POST=[auth_func],
         GET_SINGLE=[auth_func],
@@ -40,3 +54,38 @@ def complaint_file_upload(complaint_id):
 @app.route('/api/complaint/download/<path:filename>', methods=['GET'])
 def get_uploaded_file(filename):
     return get_uploaded_file_service(filename)
+
+
+@app.route('/api/complaint/status/count', methods=['GET'])
+def get_complaint_count_by_status():
+    return get_complaint_count_by_status_service()
+
+
+@app.route('/api/complaint/count/responded_by/<int:id_>', methods=['GET'])
+def get_complaint_count_by_responded_by(id_):
+    return get_complaint_count_by_responded_by_service(id_)
+
+
+@app.route('/api/complaint/count/complaint_by/<int:id_>', methods=['GET'])
+def get_complaint_count_by_complaint_by(id_):
+    return get_complaint_count_by_complaint_by_service(id_)
+
+
+@app.route('/api/complaint/status/count/responded_by/<int:id_>', methods=['GET'])
+def get_complaint_count_by_status_with_responded_by(id_):
+    return get_complaint_count_by_status_with_responded_by_service(id_)
+
+
+@app.route('/api/complaint/status/count/complaint_by/<int:id_>', methods=['GET'])
+def get_complaint_count_by_status_with_complaint_by(id_):
+    return get_complaint_count_by_status_with_complaint_by_service(id_)
+
+
+@app.route('/api/complaint/status/count/responded_by/<string:complaint_status>/<int:id_>', methods=['GET'])
+def get_complaint_count_by_status_and_responded_by(complaint_status, id_):
+    return get_complaint_count_by_status_and_responded_by_service(id_, complaint_status)
+
+
+@app.route('/api/complaint/status/count/complaint_by/<string:complaint_status>/<int:id_>', methods=['GET'])
+def get_complaint_count_by_status_and_complaint_by(complaint_status, id_):
+    return get_complaint_count_by_status_and_complaint_by_service(id_, complaint_status)

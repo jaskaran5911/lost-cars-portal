@@ -1,3 +1,61 @@
-<mat-card class="mat-elevation-z1 m-auto w-90 mt-2 p-2">
-  <p>User dashboard works!</p>
+<mat-card class="mat-elevation-z1 m-auto w-90 mt-2 mb-1 p-2">
+  <mat-card-header fxLayout="row" fxLayoutAlign="space-between center" class="mb-1">
+    <mat-card-title class="m-auto">Dashboard</mat-card-title>
+  </mat-card-header>
+
+  <mat-divider></mat-divider>
+
+  <div fxLayout="column" fxLayoutAlign="space-around start">
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="w-100 mt-1">
+      <mat-card class="w-auto">
+        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center" class="mb-1">
+          <mat-card-title fxLayout="row" fxLayoutAlign="start center" class="m-auto">
+            <mat-icon class="mr-1">assignment</mat-icon>
+            My Complaints
+          </mat-card-title>
+        </mat-card-header>
+        <div class="count-text">
+          <ng9-odometer [number]="complaintCount" [config]="{ }"></ng9-odometer>
+        </div>
+      </mat-card>
+      <mat-card class="w-auto">
+        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center" class="mb-1">
+          <mat-card-title fxLayout="row" fxLayoutAlign="start center" class="m-auto">
+            <mat-icon class="mr-1">assignment</mat-icon>
+            Under Investigation
+          </mat-card-title>
+        </mat-card-header>
+        <div class="count-text">
+          <ng9-odometer [number]="complaintUnderInvestigationCount" [config]="{ }"></ng9-odometer>
+        </div>
+      </mat-card>
+      <mat-card class="w-auto">
+        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center" class="mb-1">
+          <mat-card-title fxLayout="row" fxLayoutAlign="start center" class="m-auto">
+            <mat-icon class="mr-1">assignment</mat-icon>
+            Closed
+          </mat-card-title>
+        </mat-card-header>
+        <div class="count-text">
+          <ng9-odometer [number]="complaintClosedCount" [config]="{ }"></ng9-odometer>
+        </div>
+      </mat-card>
+      <mat-card class="w-auto">
+        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center" class="mb-1">
+          <mat-card-title fxLayout="row" fxLayoutAlign="start center" class="m-auto">
+            <mat-icon class="mr-1">assignment</mat-icon>
+            Accepted
+          </mat-card-title>
+        </mat-card-header>
+        <div class="count-text">
+          <ng9-odometer [number]="complaintAcceptedCount" [config]="{ }"></ng9-odometer>
+        </div>
+      </mat-card>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center start" class="w-100 mt-2">
+      <div class="w-100" [chart]="pieChart"></div>
+    </div>
+  </div>
+
 </mat-card>

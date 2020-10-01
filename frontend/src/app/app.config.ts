@@ -12,14 +12,19 @@ export class AppConfig {
 
   // User
   public static readonly USER_API = AppConfig.API + 'user';
+  public static readonly USER_EVAL_API = AppConfig.EVAL + 'user';
+  public static readonly USER_ROLE_COUNT_API = AppConfig.USER_API + '/role/count';
 
   // Role
   public static readonly ROLE_API = AppConfig.API + 'role';
 
   // Complaint
   public static readonly COMPLAINT_API = AppConfig.API + 'complaint';
+  public static readonly COMPLAINT_EVAL_API = AppConfig.EVAL + 'complaint';
   public static readonly COMPLAINT_UPLOAD_API = AppConfig.COMPLAINT_API + '/upload/';
   public static readonly COMPLAINT_DOWNLOAD_API = AppConfig.COMPLAINT_API + '/download/';
+  public static readonly COMPLAINT_COUNT_API = AppConfig.COMPLAINT_API + '/count';
+  public static readonly COMPLAINT_STATUS_COUNT_API = AppConfig.COMPLAINT_API + '/status/count';
 
   // Comment
   public static readonly COMMENT_API = AppConfig.API + 'comment';

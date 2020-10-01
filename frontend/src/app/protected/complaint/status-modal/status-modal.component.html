@@ -8,6 +8,7 @@
         <mat-option [value]="COMPLAINT_STATUS.ACCEPTED">{{COMPLAINT_STATUS.ACCEPTED}}</mat-option>
         <mat-option [value]="COMPLAINT_STATUS.UNDER_INVESTIGATION">{{COMPLAINT_STATUS.UNDER_INVESTIGATION}}</mat-option>
         <mat-option [value]="COMPLAINT_STATUS.REJECTED">{{COMPLAINT_STATUS.REJECTED}}</mat-option>
+        <mat-option [value]="COMPLAINT_STATUS.CLOSED">{{COMPLAINT_STATUS.CLOSED}}</mat-option>
       </mat-select>
       <mat-error *ngIf="status.touched && status.invalid">
         <small class="mat-text-warn" *ngIf="status?.errors.required">Status is required.</small>

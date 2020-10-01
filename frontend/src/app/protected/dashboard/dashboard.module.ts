@@ -6,6 +6,12 @@ import {DashboardComponent} from './dashboard.component';
 import {DashboardService} from './dashboard.service';
 import { MatCardModule } from '@angular/material/card';
 import {FormsModule} from "@angular/forms";
+import {FlexModule} from "@angular/flex-layout";
+import {MatButtonModule} from "@angular/material/button";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatIconModule} from "@angular/material/icon";
+import {Ng9OdometerModule} from "ng9-odometer";
+import {ChartModule} from "angular-highcharts";
 
 
 @NgModule({
@@ -13,7 +19,13 @@ import {FormsModule} from "@angular/forms";
     RouterModule.forChild(dashboardRoutes),
     CommonModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    FlexModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    Ng9OdometerModule,
+    ChartModule
   ],
   declarations: [
     DashboardComponent

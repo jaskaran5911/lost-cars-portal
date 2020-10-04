@@ -1,10 +1,61 @@
 <mat-card class="mat-elevation-z1 m-auto w-90 mt-2 p-2">
-  <h1>Welcome to Lost Car Portal!</h1>
-  <button mat-raised-button color="primary" [routerLink]="signUpURL" class="text-center">
-    Sign up
-  </button>
-  <span class="ml-1 mr-1">or</span>
-  <button mat-flat-button [routerLink]="loginURL" class="text-center">
-    Login
-  </button>
+  <div fxLayout="row">
+    <div>
+      <img class="img-home" src="assets/image/undraw_by_my_car_ttge.png" alt="car">
+    </div>
+    <div>
+      <h1>Welcome to Lost Car Portal!</h1>
+      <h3 style="font-weight: 500">
+        This portal would be the ultimate IT solution to face the lost and stolen car problem.
+        It will not only make the records of the cars in the database but also decrease the cases
+        of robberies of the cars. It provides the users to search their car as well they can easily
+        locate the location of the car.
+      </h3>
+      <h3 style="font-weight: 500">
+        The car lost portal will solve a lot of problem of people like; it will save the time of
+        the users by giving them latest update of the vehicle and it will decrease the rush in
+        the police stations.
+      </h3>
+      <h5>
+        It will act as the intermediate between the people and different departments of the authorities.
+      </h5>
+      <button mat-raised-button color="primary" [routerLink]="signUpURL" class="text-center">
+        Sign up
+      </button>
+      <span class="ml-1 mr-1">or</span>
+      <button mat-flat-button [routerLink]="loginURL" class="text-center">
+        Login
+      </button>
+    </div>
+  </div>
+
+  <div fxLayout="row" class="mt-2">
+    <div>
+      <h3 style="font-weight: 500">
+        Portal provides access to each and every police station with the unique id or username
+        all over the world, so, they can update the information of cars, which are in their
+        police station and also update the progression of the stolen vehicles cases.
+      </h3>
+      <h3 style="font-weight: 500">
+        Police will get the information of the new cases of car lost/stolen which is submit by
+        the people. Police can examine the hotspots of stolen cars with the help of database
+        and they can deal with it more accurately.
+      </h3>
+      <h5>
+        On the contrast, people can also take the advantage of the portal by entering the details of their
+        lost/stolen car or if it is towed by the police.
+      </h5>
+      <button mat-raised-button color="primary" [routerLink]="signUpURL" class="text-center">
+        Sign up
+      </button>
+      <span class="ml-1 mr-1">or</span>
+      <button mat-flat-button [routerLink]="loginURL" class="text-center">
+        Login
+      </button>
+    </div>
+    <div>
+      <img class="img-home ml-1" src="assets/image/police.jpg" alt="police">
+    </div>
+  </div>
+
 </mat-card>

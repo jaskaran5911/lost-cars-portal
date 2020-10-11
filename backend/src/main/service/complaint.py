@@ -1,5 +1,7 @@
 from flask import request, jsonify
 
+from src.main.model.user import User
+from src.main.service.email import send_email as send_email_service
 from src.main.dto.complaint import complaint_file_upload as complaint_file_upload_dto
 from src.main.exception.exception import handle400, handle404, handle405
 from src.main.model import db
@@ -28,6 +30,17 @@ def complaint_file_upload(complaint_id):
             return handle404()
     else:
         return handle405()
+
+
+def send_email(result):
+    user = User.query.filter_by(id=result['complaint_by']).first()
+    police_officer = User.query.filter_by(id=result['responded_by']).first()
+    send_email_service.apply_async(args=[{
+        'email_to': user.email,
+        'subject': 'Your Complaint is ' + str(result['complaint_status']),
+        'body': 'Hey ' + str(user.name) + ', Your complaint no. ' + str(result['id']) + ' is ' + str(
+            result['complaint_status']) + ' by Police Office: ' + str(police_officer.name)
+    }])
 
 
 def get_complaint_count_by_status():

@@ -18,7 +18,7 @@ from src.main.service import load_service
 from src.main.util import load_utils
 from src.resources.config import Config, BASE_DIR
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=Config.TEMPLATE_FOLDER)
 app.config.from_object(Config())
 
 # CORS
@@ -74,14 +74,14 @@ with app.app_context():
         db_user_data_store().find_or_create_role(name='police-officer', description='Police Office')
         db_user_data_store().find_or_create_role(name='user', description='User')
 
-        if not db_user_data_store().get_user('admin@lostcar.com'):
+        if not db_user_data_store().get_user('lostcarsportal@gmail.com'):
             db_user_data_store().create_user(
                 name='admin',
-                email='admin@lostcar.com',
+                email='lostcarsportal@gmail.com',
                 password='admin'
             )
             db.session.commit()
-            db_user_data_store().add_role_to_user('admin@lostcar.com', 'admin')
+            db_user_data_store().add_role_to_user('lostcarsportal@gmail.com', 'admin')
             db.session.commit()
 
 

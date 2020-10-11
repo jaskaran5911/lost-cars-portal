@@ -24,10 +24,10 @@ def create_admin_user():
     if not db_user_data_store().get_user('admin@lostcar.com'):
         db_user_data_store().create_user(
             name='admin',
-            email='admin@lostcar.com',
+            email='lostcarsportal@gmail.com',
             password='admin'
         )
-        db_user_data_store().add_role_to_user('admin@lostcar.com', 'admin')
+        db_user_data_store().add_role_to_user('lostcarsportal@gmail.com', 'admin')
         db.session.commit()
 
 

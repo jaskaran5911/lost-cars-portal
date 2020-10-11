@@ -7,6 +7,8 @@ from src.main.model.comment import Comment as CommentModel
 from src.main.security.authentication import auth_func
 
 # Comment API object
+from src.main.service.comment import send_email
+
 comment_api = api_manager.create_api_blueprint(
     CommentModel,
     methods=['GET', 'POST'],
@@ -17,6 +19,9 @@ comment_api = api_manager.create_api_blueprint(
         GET_SINGLE=[auth_func],
         GET_MANY=[auth_func],
         POST=[auth_func]
+    ),
+    postprocessors=dict(
+        POST=[send_email]
     )
 )
 

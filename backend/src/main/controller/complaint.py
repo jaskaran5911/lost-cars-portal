@@ -6,7 +6,7 @@ from src.main.http.cros_headers import add_cors_headers
 from src.main.model.complaint import Complaint as ComplaintModel
 from src.main.security.authentication import auth_func
 from src.main.security.authorization import role_admin, role_police_officer
-from src.main.service.complaint import complaint_file_upload as complaint_file_upload_service
+from src.main.service.complaint import complaint_file_upload as complaint_file_upload_service, send_email
 from src.main.service.complaint import get_complaint_count_by_status as get_complaint_count_by_status_service
 from src.main.service.complaint import \
     get_complaint_count_by_status_with_responded_by as get_complaint_count_by_status_with_responded_by_service
@@ -37,6 +37,9 @@ complaint_api = api_manager.create_api_blueprint(
         PUT_MANY=[auth_func, role_admin],
         PATCH_SINGLE=[auth_func, role_police_officer],
         PATCH_MANY=[auth_func, role_admin]
+    ),
+    postprocessors=dict(
+        PATCH_SINGLE=[send_email]
     )
 )
 

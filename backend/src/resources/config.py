@@ -4,6 +4,8 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
+    APPLICATION_NAME = 'Lost Cars Portal'
+    TEMPLATE_FOLDER = BASE_DIR + '/template/'
     DEBUG = True
     SECRET_KEY = 'secret'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -40,8 +42,9 @@ class Config(object):
     WTF_CSRF_ENABLED = False
 
     # Email config
-    MAIL_SERVER = ''
+    MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
-    MAIL_USERNAME = ''
-    MAIL_PASSWORD = ''
+    MAIL_DEFAULT_SENDER = 'Capstone Project Portal'
+    MAIL_USERNAME = 'lostcarsportal@gmail.com'
+    MAIL_PASSWORD = 'Akash@123'

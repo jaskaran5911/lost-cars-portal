@@ -12,7 +12,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 
-# Create the Roles -- unless they already exist
+# Create the Roles --unless they already exist
 def set_role_data():
     db_user_data_store().find_or_create_role(name='admin', description='Administrator')
     db_user_data_store().find_or_create_role(name='police-officer', description='Police Office')
